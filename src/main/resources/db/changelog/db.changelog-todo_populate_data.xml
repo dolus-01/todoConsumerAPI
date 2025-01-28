@@ -1,0 +1,18 @@
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+	<!--Added the entity Car -->
+	<changeSet id="20250128_populate_todo_table"
+		author="ronald.dela.gracia">
+		<insert tableName="todo">
+			<column name="id" value="1" />
+			<column name="userId" value="1" />
+			<column name="title" value="ron test data" />
+			<column name="completed" valueBoolean="true" />
+		</insert>
+	</changeSet>
+</databaseChangeLog>
