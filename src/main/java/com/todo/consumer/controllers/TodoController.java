@@ -26,5 +26,5 @@ public class TodoController {
 	public Object getData(@PathVariable String id) throws IOException, InterruptedException {
 		return todoService.getJsonData(id);
 	}
-
+	
 }

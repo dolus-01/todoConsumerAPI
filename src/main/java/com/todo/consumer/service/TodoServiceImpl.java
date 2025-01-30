@@ -7,12 +7,12 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.todo.consumer.properties.ApplicationProperties;
 import com.todo.consumer.utils.ResponseUtils;
 
-@Component
+@Service
 public class TodoServiceImpl implements TodoService {
 	
 	
