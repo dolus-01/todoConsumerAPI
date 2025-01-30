@@ -15,11 +15,12 @@
 			</not>
 		</preConditions>
 		<createTable tableName="todo">
-			<column name="id" type="bigint"
-				autoIncrement="${autoIncrement}">
+			<column name="id" type="SERIAL"
+				autoIncrement="true" >
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="userId" type="int">
+			
+			<column name="userId" type="bigint">
 				<constraints nullable="true" />
 			</column>
 			<column name="title" type="varchar(255)">
@@ -30,4 +31,23 @@
 			</column>
 		</createTable>
 	</changeSet>
+	
+	<changeSet author="ronald.dela.gracia"
+		id="create_todo_sequence" failOnError="true">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<sequenceExists sequenceName="TODO_SEQ" />
+			</not>
+		</preConditions>
+		<sql>
+			CREATE SEQUENCE TODO_SEQ
+			MINVALUE 1
+			MAXVALUE
+			9223372036854775807
+			INCREMENT BY 1
+			START WITH 10
+			CACHE 20
+		</sql>
+	</changeSet>
+	
 </databaseChangeLog>
