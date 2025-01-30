@@ -164,5 +164,15 @@ public class TodoServiceTest {
 		assertEquals("Id not found in the database, deletion failed", exception.getMessage());
 
 	}
+	
+	@Test
+	public void TestShouldGetSavedData() {
+		TodoRequest todo = new TodoRequest();
+		todo.setCompleted(false);
+		todo.setTitle("idol give me strength");
+		todo.setUserId(555);
+		Todo response = (Todo) todoServiceImpl.getSavedData(id);
+		assertEquals(response.getId(), 1);
+	}
 
 }

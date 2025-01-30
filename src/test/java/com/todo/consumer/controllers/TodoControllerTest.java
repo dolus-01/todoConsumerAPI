@@ -82,8 +82,8 @@ public class TodoControllerTest {
 
 	@Test
 	public void TestGetData() throws Exception {
-		given(todoService.getJsonData("1")).willReturn(todoResponse);
-		mvc.perform(get("/json/data/{id}", "1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		given(todoService.getJsonData(id)).willReturn(todoResponse);
+		mvc.perform(get("/json/data/{id}", id).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 	}
 
 	@Test
@@ -92,7 +92,6 @@ public class TodoControllerTest {
 		mvc.perform(
 				post("/json/data").content(mapper.writeValueAsString(request)).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
-
 	}
 
 	@Test
@@ -101,13 +100,12 @@ public class TodoControllerTest {
 		mvc.perform(
 				post("/json/data").content(mapper.writeValueAsString(request)).contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
-
 	}
 
 	@Test
 	public void TestDeleteData() throws Exception {
 		given(todoService.deleteData(id)).willReturn("Data deleted succesfully");
-		mvc.perform(delete("/json/data/{id}", "1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		mvc.perform(delete("/json/data/{id}", id).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 
 	}
 
@@ -117,6 +115,12 @@ public class TodoControllerTest {
 		mvc.perform(patch("/json/data/{id}", "6969").content(mapper.writeValueAsString(request))
 				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 
+	}
+
+	@Test
+	public void TestgetSavedData() throws Exception {
+		given(todoService.getSavedData(id)).willReturn(request);
+		mvc.perform(get("/json/data/todo/{id}", id).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 	}
 
 }
