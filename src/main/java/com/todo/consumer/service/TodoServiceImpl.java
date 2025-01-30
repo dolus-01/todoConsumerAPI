@@ -5,6 +5,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.todo.consumer.properties.ApplicationProperties;
@@ -12,13 +14,15 @@ import com.todo.consumer.utils.ResponseUtils;
 
 @Component
 public class TodoServiceImpl implements TodoService {
-
+	
+	
 	private HttpClient client;
 
 	private ApplicationProperties props;
 
 	private ResponseUtils responseUtils;
 
+	@Autowired
 	public TodoServiceImpl(ApplicationProperties props, ResponseUtils responseUtils) {
 		client = HttpClient.newHttpClient();
 		this.props = props;
