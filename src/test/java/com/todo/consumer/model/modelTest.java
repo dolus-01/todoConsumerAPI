@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.todo.consumer.ConsumerApplication;
+import com.todo.consumer.model.entity.Todo;
 import com.todo.consumer.model.request.TodoRequest;
 import com.todo.consumer.model.response.TodoResponse;
 
@@ -34,6 +35,17 @@ public class modelTest {
 		s.getTitle();
 		s.getUserId();
 		s.isCompleted();
+
+		Todo todo = new Todo(1L, 1L, "test1", false);
+		todo.setCompleted(false);
+		todo.setId(3L);
+		todo.setUserId(3L);
+		todo.setTitle("test title 123");
+		todo.getCompleted();
+		todo.getId();
+		todo.getTitle();
+		todo.getUserId();
+
 	}
 
 }
