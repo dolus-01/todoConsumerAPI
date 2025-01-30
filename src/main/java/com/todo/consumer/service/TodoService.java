@@ -10,4 +10,8 @@ public interface TodoService {
 	public Object saveNewData(TodoRequest request);
 	public Object updateData(String id, TodoRequest request);
 	public Object deleteData(String id);
+	
+	public Object getSavedData(String id);
+
+	
 }

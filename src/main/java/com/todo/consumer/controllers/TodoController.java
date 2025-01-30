@@ -31,6 +31,11 @@ public class TodoController {
 	public Object getData(@PathVariable String id) throws IOException, InterruptedException {
 		return todoService.getJsonData(id);
 	}
+	
+	@GetMapping(value = "/json/data/todo/{id}")
+	public Object getSavedData(@PathVariable String id) throws IOException, InterruptedException {
+		return todoService.getSavedData(id);
+	}
 
 	@PostMapping(value = "/json/data")
 	public Object saveNewData(@RequestBody TodoRequest request) {
@@ -40,7 +45,7 @@ public class TodoController {
 
 	@PatchMapping(value = "/json/data/{id}")
 	public Object udateJsonData(@PathVariable String id, @RequestBody TodoRequest request) {
-		return todoService.saveNewData(request);
+		return todoService.updateData(id,request);
 	}
 
 	@DeleteMapping(value = "/json/data/{id}")

@@ -82,6 +82,8 @@ public class TodoServiceImpl implements TodoService {
 
 		if (todo != null) {
 			log.info(String.format("Data updated succesfully"));
+			todo = new Todo(todo.getId(), Long.valueOf(request.getUserId()), request.getTitle(),
+					request.isCompleted());
 			return repo.save(todo);
 		} else {
 			log.info(String.format("Id not found in the database"));
@@ -92,7 +94,7 @@ public class TodoServiceImpl implements TodoService {
 
 	@Transactional
 	@Override
-	public Object deleteData(String id)  {
+	public Object deleteData(String id) {
 		log.info(String.format("Start method %s", "updateData"));
 		Optional<Todo> todoData = repo.findById(Long.valueOf(id));
 
@@ -107,6 +109,14 @@ public class TodoServiceImpl implements TodoService {
 			return "Data deleted succesfully";
 		}
 
+	}
+
+	@Override
+	public Object getSavedData(String id) {
+		log.info(String.format("Start method %s", "getSavedData"));
+
+		Optional<Todo> todoData = repo.findById(Long.valueOf(id));
+		return todoData.orElse(new Todo());
 	}
 
 }
